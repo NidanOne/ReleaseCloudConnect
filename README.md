@@ -4,7 +4,7 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 
 ## Latest release
 
-**v1.0.12** — [`CloudConnect-1.0.12.msi`](CloudConnect-1.0.12.msi)
+**v1.0.19** — [`CloudConnect-1.0.19.msi`](CloudConnect-1.0.19.msi)
 
 ## Installation
 
@@ -13,6 +13,23 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 3. Launch **CloudConnect** from the Start menu.
 
 ## Changelog
+
+### v1.0.19
+
+- Square corners on all UI elements — cards, buttons, dialogs, badges,
+  progress bars, and bar charts all use sharp rectangular corners.
+- Override Material3 shapes theme globally for consistent square styling.
+
+### v1.0.17
+
+- Deduplicate retested device tests so only the latest result per device is
+  shown in both running and completed test views. Deduplication now groups
+  by device address (csIdentifier.deviceIdentifier) instead of
+  deviceLocationId for reliable matching across retests.
+- Increase ECG endpoint timeout from 30s to 120s to prevent emergency device
+  count from failing on large sites.
+- Surface test instance load errors to the user instead of silently
+  swallowing them.
 
 ### v1.0.12
 
