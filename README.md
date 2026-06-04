@@ -4,15 +4,56 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 
 ## Latest release
 
-**v1.0.19** — [`CloudConnect-1.0.19.msi`](CloudConnect-1.0.19.msi)
+**v1.0.67** — [`CloudConnect-1.0.67.msi`](CloudConnect-1.0.67.msi)
 
 ## Installation
 
 1. Download the `.msi` file above.
 2. Run it and follow the installer prompts.
-3. Launch **CloudConnect** from the Start menu.
+3. Launch **Cloud Connect** from the Start menu.
 
 ## Changelog
+
+### v1.0.67
+
+- Fix cross-site data contamination when switching sites. On desktop, a race
+  between persisting the newly selected site and refreshing the dashboards
+  could briefly load the previous site's issues and uncommissioned devices;
+  the site is now persisted before the refresh is triggered. On Android, the
+  previous site's enrichment maps (floors, tenancies, fitting types, control
+  system names) were reused after a switch; they are now cleared.
+- Settings "Refresh All" now clears caches for the selected site only —
+  other sites' cached data and the global product catalogs are left intact.
+  Cached device test results are likewise deleted per-site.
+- The Issues heading count now matches the tab counts (distinct affected
+  devices, respecting the integrator filter) instead of counting raw issue
+  rows, so the heading always equals the sum of the tabs.
+- Rename the Emergency tab to "Predictive Maintenance (Beta)".
+
+### v1.0.66
+
+- Name exported PDF reports by site, test type, test name, and test start
+  month (e.g. `Site-Emergency_Report-function-Monthly_Test-2026-03.pdf`)
+  instead of the generic export date. Embedded PDF document titles match.
+- Summary report filenames use the earliest running instance start date.
+- New Settings toggle (BETA) to enable the Predictive Maintenance tab,
+  persisted per platform.
+- Hide the Emergency tab on sites with no emergency devices.
+- Richer maintenance predictions: predicted date label, expected life,
+  installed years.
+- Refetch cached duration tests with incomplete results.
+- Rate limiting: wait a full minute when the per-minute quota is exhausted.
+- Desktop installer package renamed to "Cloud Connect".
+
+### v1.0.20
+
+- New Predictive Maintenance tab on the Emergency Testing screen uses linear
+  regression on historical duration test results to predict when each
+  device's battery will fall below the expected pass threshold.
+- Predictions sorted by urgency: Critical (<3 months), Caution (3-6),
+  Warning (6-12), OK (>12 months).
+- No additional API calls — predictions computed from existing cached
+  duration test data.
 
 ### v1.0.19
 
