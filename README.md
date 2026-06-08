@@ -4,7 +4,7 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 
 ## Latest release
 
-**v1.0.67** — [`CloudConnect-1.0.67.msi`](CloudConnect-1.0.67.msi)
+**v1.0.68** — [`CloudConnect-1.0.68.msi`](CloudConnect-1.0.68.msi)
 
 ## Installation
 
@@ -13,6 +13,19 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 3. Launch **Cloud Connect** from the Start menu.
 
 ## Changelog
+
+### v1.0.68
+
+- Fix stale issues lingering after a site switch. Issue, tenancy, uncommissioned
+  and total-count loads run on a long-lived scope and could finish after the
+  user had already switched sites, repainting the previous site's data (e.g. a
+  nav badge showing 22 issues on a site that actually has 0). Each load is now
+  tagged with a site epoch and its results are discarded if the site changed
+  while the fetch was in flight.
+- Emergency report PDFs (Passed, Failed, Summary, and the completed full report)
+  now include the selected test name(s) and test type in the filename, the PDF
+  document title, and a subtitle on the report, reflecting whichever tests were
+  chosen to show.
 
 ### v1.0.67
 
