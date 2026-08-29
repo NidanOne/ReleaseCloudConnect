@@ -4,7 +4,7 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 
 ## Latest release
 
-**v1.0.68** — [`CloudConnect-1.0.68.msi`](CloudConnect-1.0.68.msi)
+**v1.0.69** — [`CloudConnect-1.0.69.msi`](CloudConnect-1.0.69.msi)
 
 ## Installation
 
@@ -13,6 +13,18 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 3. Launch **Cloud Connect** from the Start menu.
 
 ## Changelog
+
+### v1.0.69
+
+- Fix `OutOfMemoryError: Java heap space` on the first run after a fresh
+  install. The packaged desktop app capped the JVM heap at 512 MB, which the
+  cold-start path could exceed: with an empty local cache every static dataset
+  (product catalogue, icons, fitting types, floors) is fetched from the server
+  and parsed in full, several of them at once. The cap is now 2 GB.
+- Reduce peak memory while the first-run data load builds its lookup tables.
+  The paginated device-location sweep held every page in memory before
+  processing any of it; each page is now processed as it arrives and released
+  immediately. The number of server requests is unchanged.
 
 ### v1.0.68
 
