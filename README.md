@@ -4,7 +4,7 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 
 ## Latest release
 
-**v1.0.69** — [`CloudConnect-1.0.69.msi`](CloudConnect-1.0.69.msi)
+**v1.0.71** — [`CloudConnect-1.0.71.msi`](CloudConnect-1.0.71.msi)
 
 ## Installation
 
@@ -13,6 +13,39 @@ Signed Windows installers for the ZenControl CloudConnect desktop app.
 3. Launch **Cloud Connect** from the Start menu.
 
 ## Changelog
+
+### v1.0.71
+
+- New **Reports** tab between Emergency Testing and Settings, with every
+  printable report in one place. Each report is created only when its Print
+  button is pressed, and ignores any filters set on the other pages.
+  - Emergency Testing: print the running tests summary for all running tests
+    or for a single running test (the file name includes the test group);
+    print the Still Testing, Failed, Passed and Other device lists across all
+    running tests; open the Completed Tests page to choose a completed test.
+  - Issues & Faults: print the Overview, Control System, Device, Emergency and
+    Uncommissioned reports for the whole site or for any tenancy. Print is
+    greyed out when a report would be empty.
+- New Issues & Faults Overview report: health per category for the whole
+  site, a one-line entry for every affected device in each category, and the
+  uncommissioned devices.
+- Issue and uncommissioned device reports for a single tenancy show the
+  tenancy on the cover page.
+- PDF buttons keep their size while a report is being created.
+- Running test results are loaded once and shared, and a load that finishes
+  after switching sites is discarded so the previous site's results are never
+  shown.
+
+### v1.0.70
+
+- Fix PDF export failing with "An invalid XML character (Unicode: 0x1c) was
+  found in the element content of the document". Text from the server, such
+  as a device or test name, could contain hidden control characters that
+  stopped the whole report from being created. These characters are now
+  removed before the report is built.
+- Emergency report file names include the selected test group, so exporting
+  each test group creates a separate file instead of replacing the previous
+  one.
 
 ### v1.0.69
 
